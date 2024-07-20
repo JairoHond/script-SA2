@@ -1,0 +1,21 @@
+#!/bin/bash
+
+IMAGEN1="/ruta/a/imagen1.jpg"
+IMAGEN2="/ruta/a/imagen2.jpg"
+
+OPCION=$(whiptail --title "Cambio de Fondo de Pantalla" --menu "Elige una opción" 15 60 3 \
+"Imagen 1" "Cambia el fondo de pantalla por la imagen predefinida 1" \
+"Imagen 2" "Cambia el fondo de pantalla por la imagen predefinida 2" \
+"Salir" "Salir del script" 3>&1 1>&2 2>&3)
+
+case $OPCION in
+    "Imagen 1")
+        gsettings set org.gnome.desktop.background picture-uri "file://${IMAGEN1}"
+        ;;
+    "Imagen 2")
+        gsettings set org.gnome.desktop.background picture-uri "file://${IMAGEN2}"
+        ;;
+    "Salir")
+        exit 0
+        ;;
+esac
